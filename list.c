@@ -7,35 +7,38 @@
 //These functions have yet to be tested
 
 void print_list(struct song_node * list) {
-  struct song_node * temp = list[n];
-  while (temp.next) {
+  printf("HI IM HERE");
+  struct song_node * temp = list;
+  printf("HI IM HERE");
+  while (temp->next) {
     printf("%s by %s", temp->name, temp->artist);
-    temp = temp.next;
+    temp = temp->next;
   }
 } 
-
+/*
 void print_eList(struct song_node * list[]) { 
   for(n = 0; n < 26; n++) {
     print_list(list[n]);
   }
 }
+*/
 
 struct song_node * insert_front(struct song_node * list, char name[], char artist[]) {
   struct song_node *newNode = (struct song_node *)malloc(sizeof(struct song_node));
   newNode->next = list;
-  newNode->name = name;
-  newNode->artist = artist;
+  strcpy(newNode->name, name);
+  strcpy(newNode->artist, artist);
   return newNode;
 }
 
 struct song_node * insert_order(struct song_node * list, char name[], char artist[]) {
   struct song_node *newNode = (struct song_node *)malloc(sizeof(struct song_node));
-  newNode->name = name;
-  newNode->artist = artist;
+  strcpy(newNode->name, name);
+  strcpy(newNode->artist, artist);
   while ((strcmp(list->next->artist, artist) == 0 && strcmp(list->next->name, name) > 0) || strcmp(list->next->artist, artist) > 0) {
     list = list->next;
   }
-  struct song_node temp = list->next;
+  struct song_node *temp = list->next;
   list->next = newNode;
   if (temp) {
     newNode->next = temp;

@@ -2,7 +2,7 @@ typedef struct song_node {
     char artist[256];
     char name[256];
     struct song_node *next;
-}
+}song_node;
 
 void print_list(struct song_node * list);
 
@@ -21,7 +21,7 @@ struct song_node * find_song (struct song_node * list , char songname[]);
 struct song_node * find_artist(struct song_node * list , char artname[]);
 //find and return a pointer to the first song of an artist based on artist name
 
-struct song_node * find_random(struct song_node * list);
+struct song_node * find_random(struct song_node * list, int lim);
 //Return a pointer to random element in the list.
 
 void remove_point(struct song_node * target);
